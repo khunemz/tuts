@@ -29,7 +29,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return $this->repo->getcreate();
     }
 
     /**
@@ -40,7 +40,11 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required|max:500',
+            'body' => 'required|max:1000'
+        ]);
+        return $this->repo->save($request);
     }
 
     /**

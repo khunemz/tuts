@@ -7,12 +7,15 @@ class ArticleRepository implements IArticleRepository{
 
     public function getall()
     {
-        return 'getall';
+        return view('articles.index',
+            [
+                'articles' => Article::orderby('created_at', 'decs')->get()
+            ]);
     }
 
     public function getcreate()
     {
-        // TODO: Implement getcreate() method.
+        return view('articles.create');
     }
 
     public function getById($id)
@@ -22,7 +25,19 @@ class ArticleRepository implements IArticleRepository{
 
     public function save(Request $request)
     {
-        // TODO: Implement save() method.
+        $article = new Article;
+        $article->title = $request->title;
+        $article->body = $request->body;
+        if($article->save()):
+            flash()->success('Posted!!');
+            return redirect()->route('articles.show',
+                [
+                    'article'=> $article
+                ]);
+        endif;
+            return redirect()->back()->withInput();
+
+
     }
 
     public function getedit($id)
