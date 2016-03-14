@@ -11,6 +11,10 @@
 |
 */
 
+//Resolver
+App::bind('App\IUserRepository', 'App\UserRepository');
+App::bind('App\IArticleRepository', 'App\ArticleRepository');
+
 Route::get('/', function () {
     return view('welcome');
 });
