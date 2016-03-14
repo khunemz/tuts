@@ -32,6 +32,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
 
+    Route::resource('articles', 'ArticleController');
     Route::resource('users', 'UserController');
     Route::resource('users.articles', 'ArticleController');
 });

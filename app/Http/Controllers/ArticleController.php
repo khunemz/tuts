@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\IArticleRepository;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 
 class ArticleController extends Controller
 {
+    protected $repo;
+    public function __construct (IArticleRepository $repo){
+        $this->repo = $repo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +19,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-
+        return $this->repo->getall();
     }
 
     /**
