@@ -40,7 +40,7 @@ class UserRepository implements IUserRepository{
         ], $remember_token)):
             flash()->success('Successful signin');
             return redirect()
-               ->intended('/articles');
+               ->intended('articles');
         endif;
             return redirect()->back()->withInput();
 
@@ -48,7 +48,20 @@ class UserRepository implements IUserRepository{
 
     public function store(Request $request)
     {
-        // TODO: Implement signup() method.
+        $users = new User();
+        $users->name = $request->name;
+        $users->email = $request->email;
+        $users->password = bcrypt($request->password);
+        $users->save();
+
+        if(Auth::login($users)):
+            flash()->success('Successfully registered');
+            return redirect()->route('users.index',[
+                'users' => $users
+            ]);
+        endif;
+            flash()->warning('cannot register ,please try again');
+            return redirect()->back()->withInput();
     }
 
     public function getedit($id)
