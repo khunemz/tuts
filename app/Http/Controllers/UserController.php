@@ -48,7 +48,7 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        return $this->repo->update($request, $id);
     }
 
     public function destroy($id)

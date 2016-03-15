@@ -11,5 +11,6 @@ interface IUserRepository {
     public function store(Request $request);
     public function getedit($id);
     public function update(Request $request, $id);
+    public function signout();
     public function delete($id);
 }

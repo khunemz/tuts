@@ -83,8 +83,25 @@ class UserRepository implements IUserRepository
             return redirect()->back()->withInput();
     }
 
+    public function signout()
+    {
+        if(Auth::logout()):
+            flash()->success('Successfully logged out.');
+            return redirect()->route('articles.index');
+        endif;
+        flash()->error('Cannot log out');
+            return redirect()->back();
+
+    }
+
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        if(User::destroy($id)):
+            flash()->info('Deleted users');
+            return redirect()->route('articles.index');
+        endif;
+            flash()->warning('Connot delete account');
+            return redirect()->back();
+
     }
 }
