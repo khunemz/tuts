@@ -20,7 +20,9 @@ class ArticleRepository implements IArticleRepository{
 
     public function getById($id)
     {
-        // TODO: Implement getById() method.
+       return view('articles.show', [
+           'articles' => Article::find($id)
+       ]);
     }
 
     public function save(Request $request)
@@ -35,6 +37,7 @@ class ArticleRepository implements IArticleRepository{
                     'article'=> $article
                 ]);
         endif;
+            flash()->error('Error , please try again.');
             return redirect()->back()->withInput();
 
 
@@ -42,16 +45,33 @@ class ArticleRepository implements IArticleRepository{
 
     public function getedit($id)
     {
-        // TODO: Implement getedit() method.
+        return view('articles.edit', [
+            'articles' => Article::find($id)
+        ]);
     }
 
     public function update(Request $request, $id)
     {
-        // TODO: Implement update() method.
+        $articles = new Article();
+        $articles->title = $request->title;
+        $articles->body = $request->body;
+        if($articles->save()):
+            flash()->success('Success fully updated.');
+            return redirect()->route('articles.show', [
+                'articles' => $articles
+            ]);
+        endif;
+            flash()->error('Cannot update, please try again.');
+            return redirect()->back()->withInput();
     }
 
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        if(Article::destroy($id)):
+            flash()->success('Sucessfully deleted.');
+            return redirect()->route('articles.index');
+        endif;
+            flash()->warning('Cannot delete.');
+            return redirect()->back();
     }
 }

@@ -2,6 +2,7 @@
 @section('content')
     <h3><a href="{{ route('articles.index') }}">Back to index</a></h3>
     <h4>Create</h4>
+    @include('includes.flash')
     <!-- Form of all input -->
             {!! Form::model('articles-store', [
                 'method' => 'post',

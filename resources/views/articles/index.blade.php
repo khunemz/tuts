@@ -9,7 +9,9 @@
                 <li>Title: {{ $article->title }}</li>
                 <li>Body: {{ $article->body }}</li>
                 <li>Created at : {{ $article->created_at }}</li>
+                <li>Updated at : {{ $article->updated_at }}</li>
                 <li>Published at : {{ $article->published_at }}</li>
+                <p5><a href="{{ route('articles.show', [$article]) }}">Show </a></p5>
             </ul>
         </div>
     @endforeach

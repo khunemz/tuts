@@ -55,7 +55,7 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        return $this->repo->getById($id);
     }
 
     /**
@@ -66,7 +66,7 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        return $this->repo->getedit($id);
     }
 
     /**
@@ -78,7 +78,11 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|max:500',
+            'body'  => 'required|max:2000'
+        ]);
+        return $this->repo->update($request, $id);
     }
 
     /**
@@ -89,6 +93,6 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return $this->repo->delete($id);
     }
 }
