@@ -21,7 +21,7 @@ class ArticleRepository implements IArticleRepository{
     public function getById($id)
     {
        return view('articles.show', [
-           'articles' => Article::find($id)
+           'articles' => Article::findOrFail($id)
        ]);
     }
 
@@ -46,7 +46,7 @@ class ArticleRepository implements IArticleRepository{
     public function getedit($id)
     {
         return view('articles.edit', [
-            'articles' => Article::find($id)
+            'articles' => Article::findOrFail($id)
         ]);
     }
 

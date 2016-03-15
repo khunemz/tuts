@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+@include('includes.flash')
     <h3>Index</h3>
     <h4><a href="{{ route('articles.create') }}">Create</a></h4>
     @foreach($articles as $article)

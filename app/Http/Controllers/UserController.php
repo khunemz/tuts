@@ -15,15 +15,15 @@ class UserController extends Controller
         $this->repo = $repo;
     }
 
-    public function index()
+    public function index($id)
     {
-        return $this->repo->getallinfo();
+        return $this->repo->getallinfo($id);
     }
 
 
     public function create()
     {
-        //
+        return $this->repo->getsignup();
     }
 
     public function getsignin()

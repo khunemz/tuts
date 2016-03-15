@@ -36,7 +36,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('articles', 'ArticleController');
 
     /* ============= User ============ */
-    Route::get('users', [
+    Route::get('users/info/{users}', [
         'uses' => 'UserController@index',
         'as' => 'users.index'
     ]);
@@ -46,12 +46,12 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'users.create'
     ]);
 
-    Route::get('getsignin', [
+    Route::get('users/signin', [
         'uses' => 'UserController@getsignin',
         'as' => 'users.getsignin'
     ]);
 
-    Route::post('signin', [
+    Route::post('users/signin', [
         'uses' => 'UserController@signin',
         'as' => 'users.signin'
     ]);
@@ -61,7 +61,7 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'users.store'
     ]);
 
-    Route::get('users/{userss}/edit', [
+    Route::get('users/{users}/edit', [
         'uses' => 'UserController@edit',
         'as' => 'users.edit'
     ]);

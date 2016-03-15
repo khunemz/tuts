@@ -6,14 +6,23 @@ use Illuminate\Http\Request;
 class UserRepository implements IUserRepository{
 
 
-    public function getallinfo()
+    public function getallinfo($id)
     {
-        return view('users.index');
+        $users = User::findOrFail($id);
+        if($users):
+            flash()->success('Hello '.$users);
+            return view('users.index')->with(
+                [
+                    'users'=> $users
+                ]);
+        endif;
+        flash()->error('Cannot get users.');
+            return redirect('articles');
     }
 
     public function getsignup()
     {
-        // TODO: Implement getsignup() method.
+        return view('users.create');
     }
 
     public function getsignin()
