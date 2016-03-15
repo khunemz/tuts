@@ -8,11 +8,11 @@ use App\Http\Requests;
 
 class UserController extends Controller
 {
-
     protected $repo;
 
     public function __construct (IUserRepository $repo){
         $this->repo = $repo;
+        $this->middleware('user');
     }
 
     public function index($id)
@@ -53,6 +53,6 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        //
+        return $this->repo->delete($id);
     }
 }

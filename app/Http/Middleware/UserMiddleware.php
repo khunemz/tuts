@@ -15,6 +15,10 @@ class UserMiddleware
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if(!auth()->check()):
+            flash()->warning('Cannot access please sign in.');
+            return view('users.getsignin');
+        endif;
+            return $next();
     }
 }

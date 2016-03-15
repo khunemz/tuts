@@ -36,7 +36,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::resource('articles', 'ArticleController');
 
     /* ============= User ============ */
-    Route::get('users/info/{users}', [
+    Route::get('users/{users}', [
         'uses' => 'UserController@index',
         'as' => 'users.index'
     ]);
@@ -46,7 +46,7 @@ Route::group(['middleware' => ['web']], function () {
         'as' => 'users.create'
     ]);
 
-    Route::get('users/signin', [
+    Route::get('users/getsignin', [
         'uses' => 'UserController@getsignin',
         'as' => 'users.getsignin'
     ]);
