@@ -28,7 +28,7 @@ class UserController extends Controller
 
     public function getsignin()
     {
-        //
+        return $this->repo->getsignin();
     }
 
 
