@@ -12,7 +12,6 @@ class UserController extends Controller
 
     public function __construct (IUserRepository $repo){
         $this->repo = $repo;
-        $this->middleware('user');
     }
 
     public function index($id)
@@ -49,6 +48,11 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         return $this->repo->update($request, $id);
+    }
+
+    public function signout()
+    {
+        return $this->repo->signout();
     }
 
     public function destroy($id)

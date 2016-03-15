@@ -38,7 +38,8 @@ Route::group(['middleware' => ['web']], function () {
     /* ============= User ============ */
     Route::get('users/{users}', [
         'uses' => 'UserController@index',
-        'as' => 'users.index'
+        'as' => 'users.index',
+        'middleware' => 'user'
     ]);
 
     Route::get('users/create', [
@@ -53,26 +54,37 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::post('users/signin', [
         'uses' => 'UserController@signin',
-        'as' => 'users.signin'
+        'as' => 'users.signin',
+        'middleware' => 'user'
     ]);
 
     Route::post('users', [
         'uses' => 'UserController@store',
-        'as' => 'users.store'
+        'as' => 'users.store',
+        'middleware' => 'user'
     ]);
 
     Route::get('users/{users}/edit', [
         'uses' => 'UserController@edit',
-        'as' => 'users.edit'
+        'as' => 'users.edit',
+        'middleware' => 'user'
     ]);
 
     Route::patch('users/{users}', [
         'uses' => 'UserController@update',
-        'as' => 'users.update'
+        'as' => 'users.update',
+        'middleware' => 'user'
+    ]);
+
+    Route::get('signout', [
+        'uses' => 'UserController@signout',
+        'as' => 'signout',
+        'middleware' => 'user'
     ]);
 
     Route::delete('users/{users}', [
         'uses' => 'UserController@destroy',
-        'as' => 'users.destroy'
+        'as' => 'users.destroy',
+        'middleware' => 'user'
     ]);
 });

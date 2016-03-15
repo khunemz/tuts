@@ -6,8 +6,9 @@
             <input name="email" type="text" class="form-control" placeholder="email" />
             <input name="password" type="password" class="form-control" placeholder="password" />
             <input type="checkbox" class="checkbox">Remember me
+            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
             <button class="btn btn-info">Signin</button>
-            {!! Form::token() !!}
         </form>
-    <a href="{{ route('articles.index') }}">Back to index</a>
+    {{--<a href="{{ route('articles.index') }}">Back to index</a>--}}
+    {{--<a href="{{ route('users.create') }}">Or Register</a>--}}
 @endsection
