@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\IUserRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
 class UserController extends Controller
 {
 
+    protected $repo;
+
+    public function __construct (IUserRepository $repo){
+        $this->repo = $repo;
+    }
+
     public function index()
     {
-        //
+        return $this->repo->getallinfo();
     }
 
 

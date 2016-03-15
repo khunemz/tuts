@@ -8,7 +8,7 @@ class UserRepository implements IUserRepository{
 
     public function getallinfo()
     {
-        return view('users.getallinfo');
+        return view('users.index');
     }
 
     public function getsignup()
