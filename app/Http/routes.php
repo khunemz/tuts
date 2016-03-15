@@ -32,7 +32,47 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
 
+    /* =========== Article ========== */
     Route::resource('articles', 'ArticleController');
-    Route::resource('users', 'UserController');
-    Route::resource('users.articles', 'ArticleController');
+
+    /* ============= User ============ */
+    Route::get('users', [
+        'uses' => 'UserController@index',
+        'as' => 'users.index'
+    ]);
+
+    Route::get('users/create', [
+        'uses' => 'UserController@create',
+        'as' => 'users.create'
+    ]);
+
+    Route::get('getsignin', [
+        'uses' => 'UserController@getsignin',
+        'as' => 'users.getsignin'
+    ]);
+
+    Route::post('signin', [
+        'uses' => 'UserController@signin',
+        'as' => 'users.signin'
+    ]);
+
+    Route::post('users', [
+        'uses' => 'UserController@store',
+        'as' => 'users.store'
+    ]);
+
+    Route::get('users/{userss}/edit', [
+        'uses' => 'UserController@edit',
+        'as' => 'users.edit'
+    ]);
+
+    Route::patch('users/{users}', [
+        'uses' => 'UserController@update',
+        'as' => 'users.update'
+    ]);
+
+    Route::delete('users/{users}', [
+        'uses' => 'UserController@destroy',
+        'as' => 'users.destroy'
+    ]);
 });

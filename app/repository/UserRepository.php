@@ -5,24 +5,30 @@ use Illuminate\Http\Request;
 
 class UserRepository implements IUserRepository{
 
-    public function getall()
+
+    public function getallinfo()
     {
-        // TODO: Implement getall() method.
+        return view('users.getallinfo');
     }
 
-    public function getcreate()
+    public function getsignup()
     {
-        // TODO: Implement getcreate() method.
+        // TODO: Implement getsignup() method.
     }
 
-    public function getById($id)
+    public function getsignin()
     {
-        // TODO: Implement getById() method.
+        // TODO: Implement getsignin() method.
     }
 
-    public function save(Request $request)
+    public function signin(Request $request)
     {
-        // TODO: Implement save() method.
+        // TODO: Implement signin() method.
+    }
+
+    public function signup(Request $request)
+    {
+        // TODO: Implement signup() method.
     }
 
     public function getedit($id)
