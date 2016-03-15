@@ -31,20 +31,19 @@ class UserController extends Controller
         return $this->repo->getsignin();
     }
 
-
     public function store(Request $request)
     {
-        //
+        return $this->repo->store($request);
     }
 
     public function signin(Request $request)
     {
-        //
+        return $this->repo->signin($request);
     }
 
     public function edit($id)
     {
-        //
+        return $this->repo->getedit($id);
     }
 
     public function update(Request $request, $id)
